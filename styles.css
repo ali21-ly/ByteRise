@@ -854,6 +854,59 @@ body {
     margin: 0;
 }
 
+/* Project Status Styles */
+.project-status {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-status.completed {
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.project-status.in-progress {
+    background: linear-gradient(45deg, #ff9800, #ffb74d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.project-status.planning {
+    background: linear-gradient(45deg, #9c27b0, #ba68c8);
+    color: white;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+}
+
+/* Project Link Styles */
+.project-link {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-link:hover {
+    background: white;
+    color: #4fc3f7;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
 /* Contact Section Styles */
 .contact-section {
     padding: 6rem 0;
@@ -1496,6 +1549,16 @@ body {
         font-size: 0.95rem;
     }
     
+    .project-status {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .project-link {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+    
     .overlay-content {
         padding: 1.5rem;
     }
@@ -1714,6 +1777,16 @@ body {
     
     .portfolio-info p {
         font-size: 0.85rem;
+    }
+    
+    .project-status {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .project-link {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
     }
     
     .overlay-content {
