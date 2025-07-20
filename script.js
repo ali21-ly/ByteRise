@@ -226,46 +226,92 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Contact form functionality
+function sendEmail(event) {
+    event.preventDefault();
+    
+    // Get form data
+    const form = event.target;
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    // Simple validation
+    if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    
+    // Create email content
+    const subject = 'New Contact Form Submission - ByteRise';
+    const body = `
+Name: ${name}
+Email: ${email}
+Message: ${message}
+
+---
+This message was sent from the ByteRise website contact form.
+    `;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:alibenaisha6@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    setTimeout(() => {
+        alert('Thank you for your message! Your email client should open automatically.');
+        form.reset();
+    }, 100);
+}
+
+// WhatsApp function
+function openWhatsApp() {
+    const phoneNumber = '+381615851106';
+    const message = 'Hello! I would like to discuss a project with ByteRise.';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// Email function
+function openEmail() {
+    const email = 'alibenaisha6@gmail.com';
+    const subject = 'Inquiry from ByteRise Website';
+    const body = 'Hello! I would like to discuss a project with ByteRise.';
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+}
+
+// Facebook function
+function openFacebook() {
+    // Replace with your actual Facebook page URL
+    const facebookUrl = 'https://www.facebook.com/yourpage';
+    window.open(facebookUrl, '_blank');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Add click handlers for contact items
+        const contactItems = document.querySelectorAll('.contact-item');
+        contactItems.forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
             
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
-            submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
     }
     

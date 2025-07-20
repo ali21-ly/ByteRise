@@ -279,7 +279,7 @@
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="openWhatsApp()">
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
@@ -289,7 +289,7 @@
                         </div>
                     </div>
                     
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="openEmail()">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -299,7 +299,7 @@
                         </div>
                     </div>
                     
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="openFacebook()">
                         <div class="contact-icon">
                             <i class="fab fa-facebook"></i>
                         </div>
@@ -321,7 +321,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" onsubmit="sendEmail(event)">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your full name" required>
